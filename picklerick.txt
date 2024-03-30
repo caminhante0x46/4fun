@@ -1,4 +1,6 @@
-                               Enumeraçao de PORTAS
+![Image Alt text](/images/startpicklerick.png "P1ckl3R1ck"))
+
+Enumeraçao de PORTAS
 
 
 ┌─[caminhant3@cyberpunk]─[~]
