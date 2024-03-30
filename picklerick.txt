@@ -1,6 +1,8 @@
- Enumeraçao de PORTAS
+                               Enumeraçao de PORTAS
 
-Scanning 10.10.28.112 [1000 ports]
+
+┌─[caminhant3@cyberpunk]─[~]
+└──╼ Scanning 10.10.28.112 [1000 ports]
 Discovered open port 22/tcp on 10.10.28.112
 Discovered open port 80/tcp on 10.10.28.112
 
@@ -25,6 +27,7 @@ http://10.10.28.112/assets/ diretorios open
 
 
 scan com nikto wins
+
 http://10.10.28.112/login.php
 robots.txt
 Wubbalubbadubdub
